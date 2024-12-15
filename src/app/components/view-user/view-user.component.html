@@ -1,0 +1,42 @@
+<div class="p-6 bg-white rounded-lg shadow-lg w-full max-w-md mx-auto">
+    <div class="text-center">
+      <!-- Imagen de perfil -->
+      <img *ngIf="userData.photo" [src]="userData.photo" alt="Foto de perfil" 
+           class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-blue-500 shadow-lg">
+      
+      <h2 class="text-3xl font-semibold text-gray-800 mb-2">{{ userData.name }}</h2>
+      <p class="text-sm text-gray-500 mb-4">{{ userData.email }}</p>
+    </div>
+  
+    <!-- Información de la Dirección -->
+    <div class="mb-4">
+      <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
+      <p class="mt-1 text-gray-700">{{ userData.address || 'No disponible' }}</p>
+    </div>
+  
+    <!-- Información del Rol -->
+    <div class="mb-4">
+      <label for="rolId" class="block text-sm font-medium text-gray-700">Rol</label>
+      <p class="mt-1 text-gray-700">{{ userData.rolId ? userData.rolId : 'No disponible' }}</p>
+    </div>
+  
+    <div class="mb-4">
+        <label for="createdAt" class="block text-sm font-medium text-gray-700">Fecha de Creación</label>
+        <p class="mt-1 text-gray-700">{{ userData.createdAt | date:'short' }}</p>
+      </div>
+      
+      <div class="mb-4">
+        <label for="updatedAt" class="block text-sm font-medium text-gray-700">Fecha de Actualización</label>
+        <p class="mt-1 text-gray-700">{{ userData.updatedAt | date:'short' }}</p>
+      </div>
+  
+    <!-- Botón de Cerrar -->
+    <div class="flex justify-center mt-6">
+      <button (click)="closeDialog()" 
+              class="px-6 py-3 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">
+        Cerrar
+      </button>
+    </div>
+  </div>
+  
+  
