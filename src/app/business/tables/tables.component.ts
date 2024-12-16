@@ -51,6 +51,7 @@ export class TablesComponent implements OnInit {
       () => {
         // Eliminar el usuario de la lista local
         this.users = this.users.filter(user => user.id !== id);
+        this.loadUsers();  
         console.log(`Usuario con id ${id} eliminado`);
         Swal.fire({
                     title: '¡Éxito!',
