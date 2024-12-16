@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-user',
@@ -45,11 +46,22 @@ export class EditUserComponent {
       // Aquí no necesitas crear un objeto nuevo, ya tienes updatedUserData con los datos correctos.
       this.authService.updateUser(this.data.id, this.updatedUserData).subscribe(
         (response) => {
+          Swal.fire({
+                      title: '¡Éxito!',
+                      text: 'Usuario actualizado exitosamente.',
+                      icon: 'success',
+                      confirmButtonText: 'Aceptar'
+                    });
           this.updateUserEvent.emit(response.data == true);  // Emite los datos actualizados del usuario
           this.dialogRef.close();  // Cerrar el modal después de la actualización
         },
         (error) => {
-          console.error('Error al actualizar el usuario', error);
+          Swal.fire({
+                      title: 'Error',
+                      text: 'Hubo un problema al actualizado el usuario.',
+                      icon: 'error',
+                      confirmButtonText: 'Intentar de nuevo'
+                    });
         }
       );
     }

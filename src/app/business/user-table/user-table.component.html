@@ -1,0 +1,70 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <!-- Contenedor superior para barra de búsqueda y botón -->
+    <div class="flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700">
+      <!-- Barra de búsqueda y botón de limpiar búsqueda -->
+      <div class="flex items-center space-x-2 w-1/3"> <!-- Aquí ajustamos el ancho a 1/3 -->
+        <!-- Barra de búsqueda -->
+        <input 
+          type="text" 
+          [(ngModel)]="searchQuery" 
+          placeholder="Buscar usuario..." 
+          class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          (keyup)="onSearch()"
+        >
+        <!-- Botón para limpiar búsqueda -->
+        <button 
+          (click)="clearSearch()" 
+          class="px-4 py-2 text-sm font-medium text-white bg-gray-600 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:bg-gray-500 dark:hover:bg-gray-600 dark:focus:ring-gray-500">
+          Limpiar
+        </button>
+      </div>
+    </div>
+  
+    <!-- Tabla de usuarios -->
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="p-4">
+            <div class="flex items-center">
+              <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="checkbox-all-search" class="sr-only">checkbox</label>
+            </div>
+          </th>
+          <th scope="col" class="px-6 py-3">ID</th>
+          <th scope="col" class="px-6 py-3">Nombre</th>
+          <th scope="col" class="px-6 py-3">Dirección</th>
+          <th scope="col" class="px-6 py-3">Email</th>
+          <th scope="col" class="px-6 py-3">Fecha de registro</th>
+          <th scope="col" class="px-6 py-3">Fecha de actualización</th>
+          <th scope="col" class="px-6 py-3">Rol</th>
+          <th scope="col" class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <td class="w-4 p-4">
+            <div class="flex items-center">
+              <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+              <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+            </div>
+          </td>
+          <td class="px-6 py-4">{{ user.id }}</td>
+          <td class="px-6 py-4">{{ user.name }}</td>
+          <td class="px-6 py-4">{{ user.address }}</td>
+          <td class="px-6 py-4">{{ user.email }}</td>
+          <td class="px-6 py-4">{{ user.createdAt | date:'short' }}</td>
+          <td class="px-6 py-4">{{ user.updatedAt | date:'short' }}</td>
+          <td class="px-6 py-4">{{ user.rol.name }}</td>
+          <td class="px-6 py-4 flex space-x-2"> 
+            <a (click)="viewUser(user)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline flex items-center space-x-1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-600 dark:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.318-.33.853-.33 1.171 0 3.278 3.417 5.146 6.867 5.146 10.299 0 3.432-1.868 6.883-5.146 10.299-.318.33-.853.33-1.171 0-3.278-3.417-5.146-6.867-5.146-10.299 0-3.432 1.868-6.883 5.146-10.299zM12 6c-2.758 0-5 2.241-5 5s2.242 5 5 5 5-2.241 5-5-2.242-5-5-5z"/>
+              </svg>
+              <span>Ver</span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -41,6 +41,19 @@ export class AuthService {
       })
     );
   }
+  
+  searchByName(email: string): Observable<any> {
+    console.log('Searching user by email:', email);
+    const headers = this.createAuthorizationHeader(); 
+    return this.httpClient.post<any>(`${this.userApiUrl}/users/search`, { email }, { headers }).pipe(
+      tap(response => {
+        console.log('Search response:', response);
+        if (response.status === 200) {
+          this.setUser(response.data); // Guardamos el objeto 'data' en el almacenamiento local
+        }
+      })
+    );
+  }
 
   updateUser(id: string, userData: { 
     name: string; 
@@ -53,6 +66,27 @@ export class AuthService {
     const headers = this.createAuthorizationHeader();
     return this.httpClient.put<any>(
       `${this.userApiUrl}/users/${id}`,
+      userData, { headers }
+    ).pipe(
+      tap(response => {
+        if (response.token) {
+        }
+      })
+    );
+  }
+
+
+  createUser(userData: { 
+    name: string; 
+    photo: string; 
+    address: string; 
+    email: string; 
+    password: string; 
+    rolId: number;
+  }): Observable<any> {
+    const headers = this.createAuthorizationHeader();
+    return this.httpClient.post<any>(
+      `${this.userApiUrl}/users`,
       userData, { headers }
     ).pipe(
       tap(response => {

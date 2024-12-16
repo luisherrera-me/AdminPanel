@@ -20,7 +20,7 @@
     <div *ngIf="users" class="flex items-center mr-4">
       <img [src]="users.photo || 'ruta/a/imagen/por-defecto.png'" alt="Foto de perfil" class="rounded-full w-10 h-10 mr-3">
       <div class="flex flex-col text-sm">
-        <span class="font-semibold text-gray-700">{{ users.name }} {{ users.lastName }}</span>
+        <span class="font-semibold text-gray-700">{{ users.name }}</span>
         <span class="text-gray-500">{{ users.rol.name }}</span>
       </div>
     </div>

@@ -1,0 +1,91 @@
+<div class="p-6 bg-white rounded-lg shadow-md w-96 mx-auto">
+    <h3 class="text-2xl font-semibold text-center text-gray-800 mb-6">Nuevo Usuario</h3>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" novalidate>
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+        <input
+          id="name"
+          [(ngModel)]="updatedUserData.name"
+          name="name"
+          required
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <div class="mb-4">
+        <label for="photo" class="block text-sm font-medium text-gray-700">Foto</label>
+        <input
+          id="photo"
+          [(ngModel)]="updatedUserData.photo"
+          name="photo"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <div class="mb-4">
+        <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
+        <input
+          id="address"
+          [(ngModel)]="updatedUserData.address"
+          name="address"
+          required
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <div class="mb-4">
+        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+        <input
+          id="email"
+          [(ngModel)]="updatedUserData.email"
+          name="email"
+          type="email"
+          required
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+        <input
+          id="password"
+          [(ngModel)]="updatedUserData.password"
+          name="password"
+          type="password"
+          required
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+  
+      <div class="mb-4">
+        <label for="rolId" class="block text-sm font-medium text-gray-700">Rol</label>
+        <select
+          id="rolId"
+          [(ngModel)]="updatedUserData.rolId"
+          name="rolId"
+          required
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+          <option [value]="1">Admin</option>
+          <option [value]="2">User</option>
+        </select>
+      </div>
+  
+      <div class="flex justify-between items-center">
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Crear Usuario
+        </button>
+        <button
+          type="button"
+          (click)="closeDialog()"
+          class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+        >
+          Cerrar
+        </button>
+      </div>
+    </form>
+  </div>
+  

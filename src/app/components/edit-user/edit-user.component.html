@@ -28,7 +28,16 @@
 
     <div class="mb-4">
       <label for="rolId" class="block text-sm font-medium text-gray-700">Rol</label>
-      <input id="rolId" [(ngModel)]="updatedUserData.rolId" name="rolId" type="number" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
+      <select
+        id="rolId"
+        [(ngModel)]="updatedUserData.rolId"
+        name="rolId"
+        required
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+      >
+        <option [value]="1">Admin</option>
+        <option [value]="2">User</option>
+      </select>
     </div>
 
     <div class="flex justify-between items-center">

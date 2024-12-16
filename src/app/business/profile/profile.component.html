@@ -1,1 +1,39 @@
-<p>profile works!</p>
+<div *ngIf="users" class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <!-- Encabezado de Perfil -->
+    <div class="flex items-center space-x-4">
+      <img [src]="users.photo || 'ruta/a/imagen/por-defecto.png'" alt="User Avatar" class="w-24 h-24 rounded-full">
+      <div>
+        <h2 class="text-2xl font-semibold text-gray-900">{{ users.name }}</h2>
+        <p class="text-sm text-gray-500">Bienvenido a tu perfil.</p>
+      </div>
+    </div>
+  
+    <!-- Información del Usuario -->
+    <div  class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+        <h3 class="font-medium text-gray-800">Información de Contacto</h3>
+        <ul class="mt-2 space-y-2">
+          <li class="text-gray-700">Correo electrónico: <span class="font-semibold">{{ users.email }}</span></li>
+          <li class="text-gray-700">Direción: <span class="font-semibold">{{ users.address }}</span></li>
+        </ul>
+      </div>
+  
+      <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+        <h3 class="font-medium text-gray-800">Fecha de Registro</h3>
+        <p class="mt-2 text-gray-700">Fecha de registro: <span class="font-semibold">{{ users.createdAt }}</span></p>
+        <p class="text-gray-700">Última actualización: <span class="font-semibold">{{ users.updatedAt }}</span></p>
+      </div>
+    </div>
+  
+    <!-- Roles -->
+    <div class="mt-6">
+      <h3 class="font-medium text-gray-800">Rol</h3>
+      <div class="mt-2 text-gray-700">
+        <ul class="list-disc pl-5">
+          <li>{{ users.rol.name }}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  
